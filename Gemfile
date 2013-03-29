@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 # Not much to say here
 
-gem 'rake'
-gem 'bundler'
-
 gem 'sinatra'
 
 gem 'faraday'
+
+# For Travis to pass
+gem 'rake', :group => :test
