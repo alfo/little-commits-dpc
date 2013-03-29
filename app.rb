@@ -8,10 +8,15 @@ end
 
 post '/hook' do
 	push = JSON.parse(params[:payload])
+	
 	repo = push["repository"]["name"]
+	
 	commit = push["commits"].last
 	message = commit["message"]
 	id = commit["id"]
+	name = commit["author"]["name"]
+	username = commit["author"]["username"]
+	date = Time.parse(commit["timestamp"]).strftime('%l:%m:%S%P %e/%m/%y')
 	
 	connection = Faraday.new('http://remote.bergcloud.com')
 	
@@ -30,12 +35,15 @@ post '/hook' do
 			}
 
 			h1 { font-size: 28px; text-align: center; font-weight: bold; }
-			p { margin: 10px 0; font-size: 20px; }
+			p { margin: 10px 0; font-size: 24px; }
 			.id { font-family: 'Courier New'; font-size: 15px; text-align: center; margin: 0; }
+			.author { text-align: center; }
+			img { display: block; margin: 10px auto; }
 		</style>
 	</head>
 
 	<body>
+		<img src='http://little-commits.herokuapp.com/github.png'>
 		=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		<h1>#{repo}</h1>
 		=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -43,6 +51,7 @@ post '/hook' do
 		----------------------------------------------------------------
 		<p class='id'>#{id}</p>
 		----------------------------------------------------------------
+		<p class='author'>#{date} <br> #{name} (#{username})</p>
 	</body>
 </html>"
 	
