@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'json'
+require 'faraday'
 
 get '/' do
 	'Hey'
@@ -7,5 +8,8 @@ end
 
 post '/hook' do
 	push = JSON.parse(params[:payload])
-	"I got some JSON: #{push.inspect}"
+	
+	message = push["commits"].last["message"]
+	
+	"The message was #{message}"
 end
