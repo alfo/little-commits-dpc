@@ -16,7 +16,7 @@ post '/hook/:code' do
 	id = commit["id"]
 	name = commit["author"]["name"]
 	username = commit["author"]["username"]
-	date = Time.parse(commit["timestamp"]).strftime('%l:%m:%S%P %e/%m/%y')
+	date = Time.parse(commit["timestamp"]).strftime('%l:%m:%S%P %Z %e/%m/%y')
 	
 	connection = Faraday.new('http://remote.bergcloud.com')
 	
@@ -57,5 +57,5 @@ post '/hook/:code' do
 	
 	response = connection.post("playground/direct_print/#{params[:code]}", :html => html)
 	
-	"The message was #{message} with an ID of #{id} with a code of #{ENV['DIRECT_PRINT_CODE']}"
+	"The message was #{message} with an ID of #{id} with a code of #{params[:code]}"
 end
