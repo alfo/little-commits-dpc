@@ -1,4 +1,4 @@
-little-commits
+little-commits [![Build Status](https://api.travis-ci.org/alfo/little-commits.png)](http://travis-ci.org/alfo/little-commits)
 ==============
 
 Get a print-out every time someone commits to one of your repositories.
