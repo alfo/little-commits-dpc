@@ -1,4 +1,3 @@
-source :rubygems
+source 'https://rubygems.org'
 gem 'sinatra'
-gem 'erb'
 gem 'shotgun', :group => :development
