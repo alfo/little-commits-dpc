@@ -2,15 +2,17 @@ require 'sinatra'
 require 'json'
 require 'faraday'
 
+# Show the index page
 get '/' do
-	'Hey'
+	send_file File.join(settings.public_folder, 'index.html')
 end
 
+# We're being sent a post request!
 post '/hook/:code' do
 	push = JSON.parse(params[:payload])
 	
+	# These bits aren't very nice, but they match what GitHub says at https://help.github.com/articles/post-receive-hooks
 	repo = push["repository"]["name"]
-	
 	commit = push["commits"].last
 	message = commit["message"]
 	id = commit["id"]
@@ -20,6 +22,7 @@ post '/hook/:code' do
 	
 	connection = Faraday.new('http://remote.bergcloud.com')
 	
+	# This is a horrible way to do it, but it works for now
 	html = "
 	<html>
 	<head>
@@ -55,7 +58,9 @@ post '/hook/:code' do
 	</body>
 </html>"
 	
+	# Send the request off to BERGCloud
 	response = connection.post("playground/direct_print/#{params[:code]}", :html => html)
 	
-	"The message was #{message} with an ID of #{id} with a code of #{params[:code]}"
+	# This isn't recieved by anyone but it's useful for debugging
+	"The message was #{message} with a commit ID of #{id}"
 end

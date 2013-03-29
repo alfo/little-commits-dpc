@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Little Commits</title>
+		<meta name="author" content="Alex Forey">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+		<style>
+			#container {
+				width: 500px;
+				margin: 80px auto;
+				font-family: 'Open Sans';
+				font-weight: 400;
+			}
+			h1 {
+				font-weight: 800;
+				text-align: center;
+			}
+			a {
+				color: black;
+			}
+			header {
+				width: 254px;
+				margin: 20px auto;
+				font-weight: bold;
+				font-size: 50px;
+				display: block;
+			}
+			header img {
+				width: 100px;
+				height: auto;
+				vertical-align: middle;
+			}
+			footer {
+				text-align: center;
+				font-size: small;
+				margin-top: 40px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="container">
+			<header>
+				<img src="github.png"> + <img src="lp.png">
+			</header>
+			
+			<h1>Little Commits</h1>
+			<p>Get a print-out of each commit made to a repository.</p>
+			<p>Setup is simple. Just go to the 'Service Hooks' part of your repo's settings, and add the following URL as a WebHook URL:</p>
+			<p><code>http://little-commits.herokuapp.com/hook/YOUR_PRINT_CODE</code></p>
+			
+			<p>Replace <code>YOUR_PRINT_CODE</code> with your direct print code. Find it <a href="http://remote.bergcloud.com/developers/direct_print_codes" target="_blank">here</a>.</p>
+			
+			<p>Your print code is not stored, and if you want you can reset it on the page where you found it.</p>
+			
+			<p>If you want, you can check out the <a href="https://github.com/alfo/little-commits">source code on GitHub</a>.</p>
+		
+			<footer>
+				<p>Made by <a href="http://alexforey.com">Alex Forey</a> in 2013.</p>
+			</footer>
+		</div>
+	</body>
+</html>
