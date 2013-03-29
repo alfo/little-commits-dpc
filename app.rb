@@ -29,15 +29,15 @@ post '/hook' do
 
 			}
 
-			h1 { font-size: 20px; text-align: center; }
-			p { margin: 10px 0; font-size: 18px; }
-			.id { font-family: 'Courier New'; font-size: 14px; text-align: center; margin: 0; }
+			h1 { font-size: 28px; text-align: center; font-weight: bold; }
+			p { margin: 10px 0; font-size: 20px; }
+			.id { font-family: 'Courier New'; font-size: 15px; text-align: center; margin: 0; }
 		</style>
 	</head>
 
 	<body>
 		=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		<h1>New Commit: #{repo}</h1>
+		<h1>#{repo}</h1>
 		=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		<p class='message'>#{message}</p>
 		----------------------------------------------------------------
