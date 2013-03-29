@@ -6,7 +6,7 @@ get '/' do
 	'Hey'
 end
 
-post '/hook' do
+post '/hook/:code' do
 	push = JSON.parse(params[:payload])
 	
 	repo = push["repository"]["name"]
@@ -55,7 +55,7 @@ post '/hook' do
 	</body>
 </html>"
 	
-	response = connection.post("playground/direct_print/#{ENV['DIRECT_PRINT_CODE']}", :html => html)
+	response = connection.post("playground/direct_print/#{params[:code]}", :html => html)
 	
 	"The message was #{message} with an ID of #{id} with a code of #{ENV['DIRECT_PRINT_CODE']}"
 end
